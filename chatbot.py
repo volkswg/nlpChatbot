@@ -1,4 +1,7 @@
 import random
+import re
+import operator
+
 def main():
 	item_list = ['t-shirt','pants']
 	agree_list = ['yes','sure','of course']
@@ -12,15 +15,17 @@ def main():
 	print("Shop: How can I help you.")
 	
 	while endConversation == False:
-		text = input('Me(Home): ') #What products are you have?
+		text = input('Me(Home): ')
+		text = re.sub('[!@#$,]', '', text) # clean sentence (not alphabet)
 		proc = text.split(' ')
-		retCheck = contextCheck(proc)
+		retCheck = contextCheck(proc, hello_list)
 		# print (retCheck)
+		
 		for i in proc:
 			print (soundex_input(i))
 		if retCheck == 'greeting':
 			helloIndex = random.randint(0,len(hello_list)-1)
-			print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
+			print('Shop: ' + hello_list[helloIndex] + ', can I help you?')
 			
 		elif retCheck == 'ordering':
 				print("Now we have : ")
@@ -90,27 +95,37 @@ def main():
 			print('Shop: see you later')
 			endConversation = True
 			exit(0)
-		
-def contextCheck(wordProc):
+	
+def cleanWord(sentence):
+	for alpha in sentence:
+		if not alpha.isalpha():
+			print(alpha)
+			sentence.replace('!','')
+	print (sentence)
+	
+def contextCheck(wordProc, hello_list):
 	# Variable declaration
-	hello_list = ['Hi!','halo','hello','bello','yo']
 	shipping_list = ['kerry','ems','dhl']
+	
+	retProcess = {}
+	
 	notUnderstandCount = 0
 	
 	# for check
 	for i in wordProc:
 		if i.lower() in hello_list :
-			return 'greeting'
+			retProcess.update({1:'greeting'})
 		elif i.lower() == 'buy' or i.lower() == 'what':
-			return 'ordering'
+			retProcess.update({3:'ordering'})
 		elif i.lower() == 'suggest':
-			return 'suggesting'
+			retProcess.update({4 : 'suggesting'})
 		elif i.lower() == 'goodbye':
-			return 'ending'
+			retProcess.update({2 : 'ending'})
 		else :
 			notUnderstandCount += 1
 	if notUnderstandCount == len(wordProc):
-		return 'notUnderstand'
+		retProcess.update({10:'notUnderstand'})
+	return max(retProcess.items(), key=operator.itemgetter(1))[1]
 		
 def soundex_input(name):
 	name = name.upper()
