@@ -25,67 +25,17 @@ def main():
 					print("Now we have : ")
 					print("ID	 Product	Size 	 Color	 	Quantity")
 					print("001	 T-shirt 	S,M,L    Black	 	10")
-					print("Shop: Do you like to order now?")
-					ans = input('Me: ')
-					ans_proc = ans.split(' ')
-					for j in ans_proc:
-						if j in agree_list:
-							print("Shop:  Order me")
-							ans2 = input('Me: ')
-							ans_proc2 = ans.split(' ')
-							print("eiei +++++++++++++++=")
-							for k in ans_proc2 :
-								print(k)
-								if k in item_list:
-									print("You order for " + k + ", What shipping method do you prefer?")
-									ans_shippping = input('Me: ')
-									shipping_proc = ans_shippping.split(' ')
-									shipping_check = 1
-									print("eiei")
-									while shipping_check == 1:
-										for l in shipping_proc:
-											if l in shipping_list:
-												print('I will send you in 2 days. Thanks for coming.')
-												shipping_check = 0
-											else :
-												print('We only have 3 shipping method. EMS, KERRY and DHL ')
+					print("002	 Pants 		S,M,L   red,blue 	10")
+					
+		elif retCheck == 'suggesting':
+			x = random.randint(0,len(item_list)-1)
+			print("Shop: " + item_list[x] + ' is suggested for you.')
+			print("Shop: Do you like it ?")
+			ans = input('Me: ')
 
-			elif i.lower() == 'suggest':
-				x = random.randint(0,len(item_list)-1)
-				print("Shop: " + item_list[x] + ' is suggested for you.')
-				print("Shop: Do you like it ?")
+			if ans.lower() in agree_list :
+				print("Shop: Do you like to order now?")
 				ans = input('Me: ')
-
-				if ans.lower() in agree_list :
-					print("Shop: Do you like to order now?")
-					anss = input('Me: ')
-					ans_proc = anss.split(' ')
-					for j in ans_proc:
-						if j in agree_list:
-							print("Shop:  Order me")
-							ans2 = input('Me: ')
-							ans_proc2 = ans.split(' ')
-							for k in ans_proc2 :
-								if k in item_list:
-									print("You order for " + k + ", What shipping method do you prefer?")
-									ans_shippping = input('Me: ')
-									shipping_proc = ans_shippping.split(' ')
-									shipping_check = 1
-									while shipping_check == 1:
-										for l in shipping_proc:
-											if l in shipping_list:
-												print('I will send you in 2 days. Thanks for coming.')
-												shipping_check = 0
-											else :
-												print('We only have 3 shipping method. EMS, KERRY and DHL ')
-
-															
-				else :
-					print ("Shop: Okay, I'm sorry")
-			elif i.lower() == 'goodbye' :
-				print('Shop: see you later')
-				endConversation = True
-
 				ans_proc = ans.split(' ')
 				for j in ans_proc:
 					if j in agree_list:
@@ -135,12 +85,6 @@ def contextCheck(wordProc):
 	if notUnderstandCount == len(wordProc):
 		return 'notUnderstand'
 		
-def test1():
-	print ("eiei1")
-	print ("hah")
-	print ("hu")
-	print ("23")
-
 def soundex_input(name):
 	name = name.upper()
 	soundex = ""
@@ -156,13 +100,6 @@ def soundex_input(name):
 	soundex = soundex.replace(".", "")
 	soundex = soundex[:4].ljust(4, "0")
 	return soundex
-
-def test2():
-	print ("eiei2")
-	print ("Duck")
-	print ("Duck")
-	print ("Duck")
-	print ("Duck")
 		
 if __name__ == '__main__':
 	try:
