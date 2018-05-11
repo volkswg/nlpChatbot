@@ -1,17 +1,21 @@
 import random
 
 no_list = ['no','not yet','not now','next time','no,']
-hello_list = ['hi','halo','hello','bello','yo']
 item_list = ['t-shirt','pants']
 agree_list = ['yes','sure','of course']
-print("Hi, I'm a bot. Call me SellingBot.")
-print("How can I help you.")
-while True:
-	text = input('Enter: ') #What products are you have?
+
+endConversation = False
+print("Shop: Hi, I'm a bot. Call me SellingBot.")
+print("Shop: How can I help you.")
+
+while endConversation == False:
+	text = input('Me: ') #What products are you have?
 	proc = text.split(' ')
 	for i in proc:
 		if i.lower() in hello_list :
-			print("Hello ")
+			
+			helloIndex = random.randint(1,len(hello_list)-1)
+			print('Shop: ' + hello_list[helloIndex])
 		if i.lower() == 'buy':
 			for i in proc:
 				if i.lower() == 'something' or i.lower() == 'product':
@@ -33,9 +37,11 @@ while True:
 						print("Order me")
 						ans2 = input('Enter: ')
 						ans_proc2 = ans.split(' ')
-						for k in ans_proc2 :
-							if k in item_list:
-								 
+						# for k in ans_proc2 :
+							# if k in item_list:
+		if i.lower() == 'goodbye' :
+			print('see you later')
+			endConversation = True
 
 				
 
