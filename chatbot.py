@@ -25,8 +25,6 @@ def main():
 					print("Now we have : ")
 					print("ID	 Product	Size 	 Color	 	Quantity")
 					print("001	 T-shirt 	S,M,L    Black	 	10")
-					print("002	 Pants 		S,M,L   red,blue 	10")
-<<<<<<< HEAD
 					print("Shop: Do you like to order now?")
 					ans = input('Me: ')
 					ans_proc = ans.split(' ')
@@ -87,17 +85,7 @@ def main():
 			elif i.lower() == 'goodbye' :
 				print('Shop: see you later')
 				endConversation = True
-=======
-					
-		elif retCheck == 'suggesting':
-			x = random.randint(0,len(item_list)-1)
-			print("Shop: " + item_list[x] + ' is suggested for you.')
-			print("Shop: Do you like it ?")
-			ans = input('Me: ')
 
-			if ans.lower() in agree_list :
-				print("Shop: Do you like to order now?")
-				ans = input('Me: ')
 				ans_proc = ans.split(' ')
 				for j in ans_proc:
 					if j in agree_list:
@@ -117,7 +105,6 @@ def main():
 											shipping_check = 0
 										else :
 											print('We only have 3 shipping method. EMS, KERRY and DHL ')														
->>>>>>> 130436e30d8fd9ea881fee4d26da22a672de7797
 			else :
 				print ("Shop: Okay, I'm sorry")
 		elif retCheck == 'notUnderstand':
@@ -148,15 +135,12 @@ def contextCheck(wordProc):
 	if notUnderstandCount == len(wordProc):
 		return 'notUnderstand'
 		
-<<<<<<< HEAD
 def test1():
 	print ("eiei1")
 	print ("hah")
 	print ("hu")
 	print ("23")
 
-=======
->>>>>>> 130436e30d8fd9ea881fee4d26da22a672de7797
 def soundex_input(name):
 	name = name.upper()
 	soundex = ""
@@ -172,7 +156,6 @@ def soundex_input(name):
 	soundex = soundex.replace(".", "")
 	soundex = soundex[:4].ljust(4, "0")
 	return soundex
-<<<<<<< HEAD
 
 def test2():
 	print ("eiei2")
@@ -180,8 +163,6 @@ def test2():
 	print ("Duck")
 	print ("Duck")
 	print ("Duck")
-=======
->>>>>>> 130436e30d8fd9ea881fee4d26da22a672de7797
 		
 if __name__ == '__main__':
 	try:
