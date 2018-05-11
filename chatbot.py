@@ -2,7 +2,6 @@ import random
 
 def main():
 	item_list = ['t-shirt','pants']
-	agree_list = ['yes','sure','of course']
 	agree_list = ['yes','sure','of course','yes,']
 	hello_list = ['halo','hello','bello','yo','hi']
 	no_list = ['no','not yet','not now','next time','no,']
