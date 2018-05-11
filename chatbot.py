@@ -19,7 +19,7 @@ while endConversation == False:
 		if i.lower() in hello_list :
 			helloIndex = random.randint(1,len(hello_list)-1)
 			print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
-		elif i.lower() == 'buy':
+		elif i.lower() == 'buy' or i.lower() == 'what':
 			for i in proc:
 				if i.lower() == 'something' or i.lower() == 'product':
 					print("Now we have : ")
@@ -44,7 +44,18 @@ while endConversation == False:
 						for k in ans_proc2 :
 							if k in item_list:
 								print("You order for " + k + ", What shipping method do you prefer?")
-								ans_shippping = input('Me: ')			
+								ans_shippping = input('Me: ')
+								shipping_proc = ans_shippping.split(' ')
+								shipping_check = 1
+								while shipping_check == 1:
+									for l in shipping_proc:
+										if l in shipping_list:
+											print('I will send you in 2 days. Thanks for coming.')
+											shipping_check = 0
+										else :
+											print('We only have 3 shipping method. EMS, KERRY and DHL ')
+
+														
 			else :
 				print ("Shop: Okay, I'm sorry")
 		elif i.lower() == 'goodbye' :
