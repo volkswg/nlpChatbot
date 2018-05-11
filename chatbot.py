@@ -27,7 +27,7 @@ while endConversation == False:
 					print("001	 T-shirt 	S,M,L    Black	 	10")
 					print("002	 Pants 		S,M,L   red,blue 	10")
 		elif i.lower() == 'suggest':
-			x = random.randint(1,3)
+			x = random.randint(1,len(item_list)-1)
 			print(item_list[x] + ' is suggested for you.')
 			print("Do you like it ?")
 			ans = input('Enter: ')
@@ -41,13 +41,15 @@ while endConversation == False:
 						ans2 = input('Enter: ')
 						ans_proc2 = ans.split(' ')
 						# for k in ans_proc2 :
-							# if k in item_list:
+							# if k in item_list:			
+			else :
+				print ("Okay, I'm sorry")
 		elif i.lower() == 'goodbye' :
 			print('see you later')
 			endConversation = True
 		else :
 			noUnderstandCount += 1
-	print(str(noUnderstandCount) + ',' + str(len(proc)))
+	# print(str(noUnderstandCount) + ',' + str(len(proc)))
 	if noUnderstandCount == len(proc):
 		print ('Shop: Sorry, I cannot understand it')
 
