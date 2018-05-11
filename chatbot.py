@@ -20,7 +20,7 @@ def main():
 			if i.lower() in hello_list :
 				helloIndex = random.randint(1,len(hello_list)-1)
 				print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
-			elif i.lower() == 'buy':
+			elif i.lower() == 'buy' or i.lower() == 'order':
 				for i in proc:
 					if i.lower() == 'something' or i.lower() == 'product':
 						print("Now we have : ")
