@@ -1,8 +1,9 @@
 import random
 
 def main():
+	# Variable declearation 
 	no_list = ['no','not yet','not now','next time','no,']
-	hello_list = ['Hi!','halo','hello','bello','yo']
+	hello_list = ['Hi!','hi','halo','hello','bello','yo']
 	item_list = ['t-shirt','pants']
 	agree_list = ['yes','sure','of course']
 	shipping_list = ['kerry','ems','dhl']
@@ -20,6 +21,7 @@ def main():
 			if i.lower() in hello_list :
 				helloIndex = random.randint(1,len(hello_list)-1)
 				print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
+				
 			elif i.lower() == 'buy' or i.lower() == 'order':
 				for i in proc:
 					if i.lower() == 'something' or i.lower() == 'product':
@@ -27,6 +29,7 @@ def main():
 						print("ID	 Product	Size 	 Color	 	Quantity")
 						print("001	 T-shirt 	S,M,L    Black	 	10")
 						print("002	 Pants 		S,M,L   red,blue 	10")
+						
 			elif i.lower() == 'suggest':
 				x = random.randint(0,len(item_list)-1)
 				print("Shop: " + item_list[x] + ' is suggested for you.')
@@ -45,14 +48,18 @@ def main():
 							for k in ans_proc2 :
 								if k in item_list:
 									print("You order for " + k + ", What shipping method do you prefer?")
-									ans_shippping = input('Me: ')			
+									ans_shippping = input('Me: ')	
+									
 				else :
 					print ("Shop: Okay, I'm sorry")
+					
 			elif i.lower() == 'goodbye' :
 				print('Shop: see you later')
 				endConversation = True
+				
 			else :
 				noUnderstandCount += 1
+				
 		# print(str(noUnderstandCount) + ',' + str(len(proc)))
 		if noUnderstandCount == len(proc):
 			print ('Shop: Sorry, I cannot understand it')
