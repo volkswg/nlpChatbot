@@ -16,7 +16,6 @@ while endConversation == False:
 	proc = text.split(' ')
 	for i in proc:
 		if i.lower() in hello_list :
-			
 			helloIndex = random.randint(1,len(hello_list)-1)
 			print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
 		elif i.lower() == 'buy':
@@ -28,24 +27,24 @@ while endConversation == False:
 					print("002	 Pants 		S,M,L   red,blue 	10")
 		elif i.lower() == 'suggest':
 			x = random.randint(1,len(item_list)-1)
-			print(item_list[x] + ' is suggested for you.')
-			print("Do you like it ?")
-			ans = input('Enter: ')
+			print("Shop: " + item_list[x] + ' is suggested for you.')
+			print("Shop: Do you like it ?")
+			ans = input('Me: ')
 			if ans.lower() in agree_list :
-				print("Do you like to order now?")
-				ans = input('Enter: ')
+				print("Shop: Do you like to order now?")
+				ans = input('Me: ')
 				ans_proc = ans.split(' ')
 				for j in ans_proc:
 					if j in agree_list:
-						print("Order me")
-						ans2 = input('Enter: ')
+						print("Shop:  Order me")
+						ans2 = input('Me: ')
 						ans_proc2 = ans.split(' ')
 						# for k in ans_proc2 :
 							# if k in item_list:			
 			else :
-				print ("Okay, I'm sorry")
+				print ("Shop: Okay, I'm sorry")
 		elif i.lower() == 'goodbye' :
-			print('see you later')
+			print('Shop: see you later')
 			endConversation = True
 		else :
 			noUnderstandCount += 1
