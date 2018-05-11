@@ -35,6 +35,7 @@ def main():
 							print("Shop:  Order me")
 							ans2 = input('Me: ')
 							ans_proc2 = ans.split(' ')
+							print("eiei +++++++++++++++=")
 							for k in ans_proc2 :
 								print(k)
 								if k in item_list:
@@ -50,8 +51,6 @@ def main():
 												shipping_check = 0
 											else :
 												print('We only have 3 shipping method. EMS, KERRY and DHL ')
-						
-
 
 			elif i.lower() == 'suggest':
 				x = random.randint(0,len(item_list)-1)
@@ -61,8 +60,8 @@ def main():
 
 				if ans.lower() in agree_list :
 					print("Shop: Do you like to order now?")
-					ans = input('Me: ')
-					ans_proc = ans.split(' ')
+					anss = input('Me: ')
+					ans_proc = anss.split(' ')
 					for j in ans_proc:
 						if j in agree_list:
 							print("Shop:  Order me")
@@ -99,7 +98,7 @@ def test1():
 	print ("hah")
 	print ("hu")
 	print ("23")
-<<<<<<< HEAD
+
 def soundex_input(name):
 	name = name.upper()
 	soundex = ""
@@ -116,15 +115,12 @@ def soundex_input(name):
 	soundex = soundex[:4].ljust(4, "0")
 	return soundex
 
-
-=======
 def test2():
 	print ("eiei2")
 	print ("Duck")
 	print ("Duck")
 	print ("Duck")
 	print ("Duck")
->>>>>>> 45f49eaf6831353b6cac7af942256287fb13c0bc
 		
 if __name__ == '__main__':
 	try:
