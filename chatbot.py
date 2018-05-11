@@ -2,8 +2,9 @@ import random
 def main():
 	item_list = ['t-shirt','pants']
 	agree_list = ['yes','sure','of course']
-	hello_list = ['Hi!','halo','hello','bello','yo']
+	hello_list = ['halo','hello','bello','yo','hi']
 	no_list = ['no','not yet','not now','next time','no,']
+	shipping_list = ['ems','kerry','dhl']
 	
 	endConversation = False
 
@@ -11,7 +12,7 @@ def main():
 	print("Shop: How can I help you.")
 	
 	while endConversation == False:
-		text = input('Me: ') #What products are you have?
+		text = input('Me(Home): ') #What products are you have?
 		proc = text.split(' ')
 		retCheck = contextCheck(proc)
 		# print (retCheck)
@@ -20,15 +21,34 @@ def main():
 			print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
 			
 		elif retCheck == 'ordering':
-			for i in proc:
-				if i.lower() == 'something' or i.lower() == 'product':
-					print("Now we have : ")
-					print("ID	 Product	Size 	 Color	 	Quantity")
-					print("001	 T-shirt 	S,M,L    Black	 	10")
-					print("002	 Pants 		S,M,L   red,blue 	10")
+				print("Now we have : ")
+				print("ID	 Product	Size 	 Color	 	Quantity")
+				print("001	 T-shirt 	S,M,L    Black	 	10")
+				print("002	 Pants 		S,M,L   red,blue 	10")
+				print("Shop:  Order me")
+				ans2 = input('Me(Order): ')
+				ans_proc2 = ans2.split(' ')
+				for k in ans_proc2 :
+					if k in item_list:
+						print("You order for " + k)
+						
+						shipping_check = 1
+						count = 0
+						while shipping_check == 1:
+							print("How can I send you our products?")
+							ans_shippping = input('Me: ')
+							shipping_proc = ans_shippping.split(' ')
+							for l in shipping_proc:
+								count = count + 1
+								if l.lower() in shipping_list:
+									print('I will send you in 2 days. Thanks for coming.')
+									shipping_check = 0
+								else :
+									if count == len(shipping_proc):
+										print('We only have 3 shipping method. EMS, KERRY and DHL ')														
 					
 		elif retCheck == 'suggesting':
-			x = random.randint(0,len(item_list)-1)
+			x = random.randint(0,1)
 			print("Shop: " + item_list[x] + ' is suggested for you.')
 			print("Shop: Do you like it ?")
 			ans = input('Me: ')
@@ -40,21 +60,26 @@ def main():
 				for j in ans_proc:
 					if j in agree_list:
 						print("Shop:  Order me")
-						ans2 = input('Me: ')
-						ans_proc2 = ans.split(' ')
+						ans2 = input('Me(Order): ')
+						ans_proc2 = ans2.split(' ')
 						for k in ans_proc2 :
 							if k in item_list:
-								print("You order for " + k + ", What shipping method do you prefer?")
-								ans_shippping = input('Me: ')
-								shipping_proc = ans_shippping.split(' ')
+								print("You order for " + k)
+								
 								shipping_check = 1
+								count = 0
 								while shipping_check == 1:
+									print("How can I send you our products?")
+									ans_shippping = input('Me: ')
+									shipping_proc = ans_shippping.split(' ')
 									for l in shipping_proc:
-										if l in shipping_list:
+										count = count + 1
+										if l.lower() in shipping_list:
 											print('I will send you in 2 days. Thanks for coming.')
 											shipping_check = 0
 										else :
-											print('We only have 3 shipping method. EMS, KERRY and DHL ')														
+											if count == len(shipping_proc):
+												print('We only have 3 shipping method. EMS, KERRY and DHL ')														
 			else :
 				print ("Shop: Okay, I'm sorry")
 		elif retCheck == 'notUnderstand':
