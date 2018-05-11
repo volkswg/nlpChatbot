@@ -27,7 +27,7 @@ while endConversation == False:
 					print("001	 T-shirt 	S,M,L    Black	 	10")
 					print("002	 Pants 		S,M,L   red,blue 	10")
 		elif i.lower() == 'suggest':
-			x = random.randint(1,len(item_list)-1)
+			x = random.randint(0,len(item_list)-1)
 			print(item_list[x] + ' is suggested for you.')
 			print("Do you like it ?")
 			ans = input('Enter: ')
