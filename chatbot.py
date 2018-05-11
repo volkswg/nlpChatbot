@@ -93,7 +93,7 @@ def main():
 		
 def contextCheck(wordProc):
 	# Variable declaration
-	hello_list = ['Hi!','halo','hello','bello','yo']
+	hello_list = ['hi','halo','hello','bello','yo']
 	shipping_list = ['kerry','ems','dhl']
 	notUnderstandCount = 0
 	
