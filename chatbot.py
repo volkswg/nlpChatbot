@@ -99,6 +99,7 @@ def test1():
 	print ("hah")
 	print ("hu")
 	print ("23")
+<<<<<<< HEAD
 def soundex_input(name):
 	name = name.upper()
 	soundex = ""
@@ -116,6 +117,14 @@ def soundex_input(name):
 	return soundex
 
 
+=======
+def test2():
+	print ("eiei2")
+	print ("Duck")
+	print ("Duck")
+	print ("Duck")
+	print ("Duck")
+>>>>>>> 45f49eaf6831353b6cac7af942256287fb13c0bc
 		
 if __name__ == '__main__':
 	try:
