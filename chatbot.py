@@ -3,8 +3,9 @@ import re
 import operator
 
 def main():
-	item_list = ['t-shirt','pants']
+	# item_list = ['t-shirt','pants']s
 	hello_list = ['halo','hello','bello','yo','hi']
+	item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
 	# shipping_list = ['ems','kerry','dhl']
 	
 	endConversation = False
@@ -14,9 +15,11 @@ def main():
 	
 	while endConversation == False:
 		text = input('Me(Home): ')
+		print()
+		
 		text = re.sub('[!@#$,]', '', text) # clean sentence (not alphabet)
 		proc = text.split(' ')
-		retCheck = contextCheck(proc)
+		retCheck = contextCheck(proc,item_list)
 		# print (retCheck)
 		
 		# for i in proc:
@@ -30,7 +33,8 @@ def main():
 			print('Shop: What?')
 		elif retCheck == 'ordering':
 			print("Shop: Okay Good, then you can look at the store and copy the item code and I will send you a detail.")
-		# elif retCheck == 'suggesting':
+		elif retCheck == 'suggesting':
+			print('Shop: Sorry, this feature is not available now (Upgrade to vip to unlock)')
 			# x = random.randint(0,1)
 			# print("Shop: " + item_list[x] + ' is suggested for you.')
 			# print("Shop: Do you like it ?")
@@ -82,7 +86,7 @@ def main():
 			endConversation = True
 			exit(0)
 		else :
-			checkItemCodeDetail(retCheck)
+			checkItemCodeDetail(retCheck,item_list)
 			
 def cleanWord(sentence):
 	for alpha in sentence:
@@ -91,14 +95,15 @@ def cleanWord(sentence):
 			sentence.replace('!','')
 	print (sentence)
 	
-def checkItemCodeDetail(itemCode):
-	item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
+def checkItemCodeDetail(itemCode,item_list):
+	# item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
 	check = -1
 	for i in range(0,len(item_list)):
 		if itemCode == item_list[i][0]:
-			print ('Shop: This item is a' + item_list[i][1] + ' and we have size ' + item_list[i][2] + ' and we have color in ' + item_list[i][3])
+			print ('Shop: This item is a ' + item_list[i][1] + ' and we have size ' + item_list[i][2] + ' and we have color in ' + item_list[i][3])
 			while check == -1:
 				answer = input('      What do you want (Example: size: m , color: red, quantity: 3)\nMe:')
+				print()
 				check = orderCheck(itemCode,item_list[i][1],answer)
 	# print ('test item.' + itenCode + str(item_list[1]))
 
@@ -119,8 +124,10 @@ def orderCheck(itemcode,products,answer):
 		while retVal != 'agree' and retVal != 'no':
 			if retVal == '':
 				comfirmCheck = input('Shop: That right?\nMe:')
+				print()
 			else:
 				comfirmCheck = input('Shop: What did you say?\nMe:')
+				print()
 				
 			retVal = contextCheck(comfirmCheck.split(' '))
 			if retVal == 'agree':
@@ -130,15 +137,15 @@ def orderCheck(itemcode,products,answer):
 				print('Shop: Okay, tell me if you want some thing')
 		return 1
 	
-def contextCheck(wordProc):
+def contextCheck(wordProc,itemCode_list):
 	# Variable declaration
 	agree_list = ['yes','sure','of course']
 	hello_list = ['halo','hello','bello','yo','hi']
-	no_list = ['no','not yet','not now','next time','no,']
+	no_list = ['no','not yet','not now','next time','nothing']
 	
 	shipping_list = ['kerry','ems','dhl']
 	ordering_list = ['buy','order','purchase']
-	itemCode_list = ['IC1234','IC1244']
+	itemCode_list = ['IC1234','IC2341']
 	
 	# print(itemCode_list)
 	
@@ -160,7 +167,7 @@ def contextCheck(wordProc):
 			retProcess.update({4 : 'suggesting'})
 		elif i.lower() == 'goodbye':
 			retProcess.update({2 : 'ending'})
-		elif i in itemCode_list:
+		elif i in itemCode_list	:
 			retProcess.update({99:i})
 		else :
 			notUnderstandCount += 1
