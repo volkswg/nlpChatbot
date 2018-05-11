@@ -2,10 +2,10 @@ import random
 import re
 import operator
 
+item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
+
 def main():
-	# item_list = ['t-shirt','pants']s
 	hello_list = ['halo','hello','bello','yo','hi']
-	item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
 	# shipping_list = ['ems','kerry','dhl']
 	
 	endConversation = False
@@ -87,13 +87,6 @@ def main():
 			exit(0)
 		else :
 			checkItemCodeDetail(retCheck,item_list)
-			
-def cleanWord(sentence):
-	for alpha in sentence:
-		if not alpha.isalpha():
-			print(alpha)
-			sentence.replace('!','')
-	print (sentence)
 	
 def checkItemCodeDetail(itemCode,item_list):
 	# item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
@@ -129,7 +122,7 @@ def orderCheck(itemcode,products,answer):
 				comfirmCheck = input('Shop: What did you say?\nMe:')
 				print()
 				
-			retVal = contextCheck(comfirmCheck.split(' '))
+			retVal = contextCheck(comfirmCheck.split(' '),item_list)
 			if retVal == 'agree':
 				print('Shop: Okay, I recorded it, the owner will contract you shortly, thank you :)')
 				print('Shop: Tell me if you want anything')
