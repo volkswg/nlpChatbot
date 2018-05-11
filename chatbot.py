@@ -73,6 +73,10 @@ def test1():
 	print ("eiei1")
 def test2():
 	print ("eiei2")
+	print ("Duck")
+	print ("Duck")
+	print ("Duck")
+	print ("Duck")
 		
 if __name__ == '__main__':
 	try:
