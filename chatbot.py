@@ -71,6 +71,9 @@ def main():
 		
 def test1():
 	print ("eiei1")
+	print ("hah")
+	print ("hu")
+	print ("23")
 def test2():
 	print ("eiei2")
 		
