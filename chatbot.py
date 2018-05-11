@@ -87,13 +87,6 @@ def main():
 			exit(0)
 		else :
 			checkItemCodeDetail(retCheck,item_list)
-			
-def cleanWord(sentence):
-	for alpha in sentence:
-		if not alpha.isalpha():
-			print(alpha)
-			sentence.replace('!','')
-	print (sentence)
 	
 def checkItemCodeDetail(itemCode,item_list):
 	# item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
