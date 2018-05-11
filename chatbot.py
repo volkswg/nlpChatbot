@@ -16,8 +16,10 @@ def main():
 		proc = text.split(' ')
 		retCheck = contextCheck(proc)
 		# print (retCheck)
+		for i in proc:
+			print (soundex_input(i))
 		if retCheck == 'greeting':
-			helloIndex = random.randint(1,len(hello_list)-1)
+			helloIndex = random.randint(0,len(hello_list)-1)
 			print('Shop: ' + hello_list[helloIndex] + ', please say what you need.')
 			
 		elif retCheck == 'ordering':
@@ -113,7 +115,8 @@ def contextCheck(wordProc):
 def soundex_input(name):
 	name = name.upper()
 	soundex = ""
-	soundex += name[0]
+	if len(name) > 0:
+		soundex += name[0]
 	dictionary = {"BFPV": "1", "CGJKQSXZ":"2", "DT":"3", "L":"4", "MN":"5", "R":"6", "AEIOUHWY":"."}
 
 	for char in name[1:]:
