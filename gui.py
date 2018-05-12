@@ -155,6 +155,5 @@ def confirmOrder(input):
 	
 
 input_field.bind("<Return>", Enter_pressed)
-# input_field.config(state=DISABLED)
 frame.pack()
 window.mainloop()
