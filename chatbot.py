@@ -3,6 +3,7 @@ import re
 import operator
 
 item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
+chatState = 'Home'
 
 def main():
 	hello_list = ['halo','hello','bello','yo','hi']
@@ -14,82 +15,82 @@ def main():
 	# print("Shop: How can I help you.")
 	
 	while endConversation == False:
-		text = input('Me(Home): ')
-		print()
-		
-		text = re.sub('[!@#$,]', '', text) # clean sentence (not alphabet)
-		proc = text.split(' ')
-		retCheck = contextCheck(proc,item_list)
-		# print (retCheck)
-		
-		# for i in proc:
-			# print (soundex_input(i))
-		if retCheck == 'greeting':
-			helloIndex = random.randint(0,len(hello_list)-1)
-			print('Shop: ' + hello_list[helloIndex] + ', can I help you?')
-		elif retCheck == 'agree':
-			print('Shop: what?')
-		elif retCheck == 'no':
-			print('Shop: What?')
-		elif retCheck == 'ordering':
-			print("Shop: Okay Good, then you can look at the store and copy the item code and I will send you a detail.")
-		elif retCheck == 'suggesting':
-			print('Shop: Sorry, this feature is not available now (Upgrade to vip to unlock)')
-			# x = random.randint(0,1)
-			# print("Shop: " + item_list[x] + ' is suggested for you.')
-			# print("Shop: Do you like it ?")
+		if chatState.lower() == 'home':
+			text = input('Me(Home): ')
+			print()
 			
-			# retVal = ''
-			# while retVal != 'agree' and retVal != 'no':
-				# comfirmCheck = input('Me: ')
-					
-				# retVal = contextCheck(comfirmCheck.split(' '))
-				# if retVal == 'agree':
-					# print('Shop: Okay, I recorded it, the owner will contract you shortly, thank you :)')
-					# print('Shop: Tell me if you want anything')
-				# if retVal == 'no':
-					# print('Shop: Okay, tell me if you want some thing')
+			text = re.sub('[!@#$,]', '', text) # clean sentence (not alphabet)
+			proc = text.split(' ')
+			retCheck = contextCheck(proc,item_list)
+			# print (retCheck)
+			
+			# for i in proc:
+				# print (soundex_input(i))
+			if retCheck == 'greeting':
+				helloIndex = random.randint(0,len(hello_list)-1)
+				print('Shop: ' + hello_list[helloIndex] + ', can I help you?')
+			elif retCheck == 'agree':
+				print('Shop: what?')
+			elif retCheck == 'no':
+				print('Shop: What?')
+			elif retCheck == 'ordering':
+				print("Shop: Okay Good, then you can look at the store and copy the item code and I will send you a detail.")
+			elif retCheck == 'suggesting':
+				print('Shop: Sorry, this feature is not available now (Upgrade to vip to unlock)')
+				# x = random.randint(0,1)
+				# print("Shop: " + item_list[x] + ' is suggested for you.')
+				# print("Shop: Do you like it ?")
+				
+				# retVal = ''
+				# while retVal != 'agree' and retVal != 'no':
+					# comfirmCheck = input('Me: ')
+						
+					# retVal = contextCheck(comfirmCheck.split(' '))
+					# if retVal == 'agree':
+						# print('Shop: Okay, I recorded it, the owner will contract you shortly, thank you :)')
+						# print('Shop: Tell me if you want anything')
+					# if retVal == 'no':
+						# print('Shop: Okay, tell me if you want some thing')
 
-			# if ans.lower() in agree_list :
-				# print("Shop: Do you like to order now?")
-				# ans = input('Me: ')
-				# ans_proc = ans.split(' ')
-				# for j in ans_proc:
-					# if j in agree_list:
-						# print("Shop:  Order me")
-						# ans2 = input('Me(Order): ')
-						# ans_proc2 = ans2.split(' ')
-						# for k in ans_proc2 :
-							# if k in item_list:
-								# print("You order for " + k)
-								
-								# shipping_check = 1
-								# count = 0
-								# while shipping_check == 1:
-									# print("How can I send you our products?")
-									# ans_shippping = input('Me: ')
-									# shipping_proc = ans_shippping.split(' ')
-									# for l in shipping_proc:
-										# count = count + 1
-										# if l.lower() in shipping_list:
-											# print('I will send you in 2 days. Thanks for coming.')
-											# shipping_check = 0
-										# else :
-											# if count == len(shipping_proc):
-												# print('We only have 3 shipping method. EMS, KERRY and DHL ')														
-			# else :
-				# print ("Shop: Okay, I'm sorry")
-		elif retCheck == 'notUnderstand':
-			print ('Shop: Sorry, I cannot understand it.')
-		elif retCheck == 'ending':
-			print('Shop: see you later')
-			endConversation = True
-			exit(0)
-		else :
-			checkItemCodeDetail(retCheck,item_list)
+				# if ans.lower() in agree_list :
+					# print("Shop: Do you like to order now?")
+					# ans = input('Me: ')
+					# ans_proc = ans.split(' ')
+					# for j in ans_proc:
+						# if j in agree_list:
+							# print("Shop:  Order me")
+							# ans2 = input('Me(Order): ')
+							# ans_proc2 = ans2.split(' ')
+							# for k in ans_proc2 :
+								# if k in item_list:
+									# print("You order for " + k)
+									
+									# shipping_check = 1
+									# count = 0
+									# while shipping_check == 1:
+										# print("How can I send you our products?")
+										# ans_shippping = input('Me: ')
+										# shipping_proc = ans_shippping.split(' ')
+										# for l in shipping_proc:
+											# count = count + 1
+											# if l.lower() in shipping_list:
+												# print('I will send you in 2 days. Thanks for coming.')
+												# shipping_check = 0
+											# else :
+												# if count == len(shipping_proc):
+													# print('We only have 3 shipping method. EMS, KERRY and DHL ')														
+				# else :
+					# print ("Shop: Okay, I'm sorry")
+			elif retCheck == 'notUnderstand':
+				print ('Shop: Sorry, I cannot understand it.')
+			elif retCheck == 'ending':
+				print('Shop: see you later')
+				endConversation = True
+				exit(0)
+			else :
+				checkItemCodeDetail(retCheck,item_list)
 	
 def checkItemCodeDetail(itemCode,item_list):
-	# item_list = [['IC1234','T-shirt','S,M,L','Red'],['IC2341','Pant','S,M,L','Blue'] ]
 	check = -1
 	for i in range(0,len(item_list)):
 		if itemCode == item_list[i][0]:
